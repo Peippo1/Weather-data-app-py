@@ -40,13 +40,18 @@
     <br>
     <div id="pi" class="alert alert-primary"></div>
     <py-script>
-              # Import Libraries
+        # Import Libraries
         import pandas as pd
         import matplotlib.pyplot as plt
         from pyodide.http import open_url
         # This is a library provided by PyScript that allows us to read from a source on the web
+
         import datetime as dt
         pyscript.write('today', dt.date.today().strftime('%A %B %d, %Y'))
+
+        # The next thing to do is to define a way of invoking the plot function when the user selects a new chart from the drop down menu.
+        from js import document
+        from pyodide import create_proxy
 
         # linked to open_url
         url = 'https://raw.githubusercontent.com/alanjones2/uk-historical-weather/main/data/Heathrow.csv'
@@ -54,11 +59,18 @@
         df = pd.read_csv(url_content)
         # filter the data for the year 2020
         df = df[df['Year']==2020]
+
         # Function to plot the chart
         def plot(chart):
             fig, ax = plt.subplots()
             df.plot(y=chart, x='Month', figsize=(8,4),ax=ax)
             pyscript.write("chart1",fig)
+
+        # The js library allows PyScript to access Javascript functions, in this case importing access to the DOM. And create_proxy from Pyodide does the opposite allowing Javascript to directly call PyScript functions.
+        def selectChange(event):
+          choice = document.getElementById("select").value
+          plot(choice)
+        # This function is called when a change event occours
     </py-script>
   </body>
 </html>
