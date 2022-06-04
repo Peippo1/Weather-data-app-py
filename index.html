@@ -1,11 +1,11 @@
 <html>
   <head>
-    <link rel="stylesheet" 
+    <link rel="stylesheet"
         href="https://pyscript.net/alpha/pyscript.css" />
-    <script defer 
+    <script defer
         src="https://pyscript.net/alpha/pyscript.js">
     </script>
-    <link rel="stylesheet" 
+    <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <py-env>
         - matplotlib
@@ -52,7 +52,6 @@
         url = 'https://raw.githubusercontent.com/alanjones2/uk-historical-weather/main/data/Heathrow.csv'
         url_content = open_url(url)
         df = pd.read_csv(url_content)
-
         # Function to plot the chart
         def plot(chart):
             fig, ax = plt.subplots()
