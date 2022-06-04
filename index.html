@@ -54,6 +54,11 @@
         df = pd.read_csv(url_content)
         # filter the data for the year 2020
         df = df[df['Year']==2020]
+        # Function to plot the chart
+        def plot(chart):
+            fig, ax = plt.subplots()
+            df.plot(y=chart, x='Month', figsize=(8,4),ax=ax)
+            pyscript.write("chart1",fig)
     </py-script>
   </body>
 </html>
