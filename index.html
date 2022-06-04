@@ -1,11 +1,11 @@
 <html>
   <head>
-    <link rel="stylesheet" 
+    <link rel="stylesheet"
         href="https://pyscript.net/alpha/pyscript.css" />
-    <script defer 
+    <script defer
         src="https://pyscript.net/alpha/pyscript.js">
     </script>
-    <link rel="stylesheet" 
+    <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <py-env>
         - matplotlib
@@ -52,6 +52,8 @@
         url = 'https://raw.githubusercontent.com/alanjones2/uk-historical-weather/main/data/Heathrow.csv'
         url_content = open_url(url)
         df = pd.read_csv(url_content)
+        # filter the data for the year 2020
+        df = df[df['Year']==2020]
     </py-script>
   </body>
 </html>
