@@ -42,20 +42,22 @@
 
     <py-script>
         # Import libraries
+        import datetime as dt
+        pyscript.write('today', dt.date.today().strftime('%A %B %d, %Y'))
         import pandas as pd
         import matplotlib.pyplot as plt
 
         # Get the data
         from pyodide.http import open_url
 
-      # This is a library provided by PyScript that allows us to read from a source on the web
+        # This is a library provided by PyScript that allows us to read from a source on the web
 
-      import datetime as dt
-      pyscript.write('today', dt.date.today().strftime('%A %B %d, %Y'))
+        import datetime as dt
+        pyscript.write('today', dt.date.today().strftime('%A %B %d, %Y'))
 
-      # The next thing to do is to define a way of invoking the plot function when the user selects a new chart from the drop down menu.
-      from js import document
-      from pyodide import create_proxy
+        # The next thing to do is to define a way of invoking the plot function when the user selects a new chart from the drop down menu.
+        from js import document
+        from pyodide import create_proxy
 
       url = 'https://raw.githubusercontent.com/alanjones2/uk-historical-weather/main/data/Heathrow.csv'
       url_content = open_url(url)
